@@ -1,0 +1,18 @@
+<body background="/assets/imagenes/newFondo.jpg" 
+class="m-0 vh-100 row justify-content-center align-items-center">
+    <div class="col-auto bg-light p-5 text-center rounded" style="width: 300px;">
+        <h2>Iniciar sesion</h2>
+        <hr>
+        <form (ngSubmit)="login()">
+            <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="user" [ngModelOptions]="{standalone: true}">
+            
+            <br>
+            <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+            
+            <br>
+            <input type="submit" value="Ingresar" class="btn btn-outline-primary">
+
+        </form>
+
+    </div>
+</body>

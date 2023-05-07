@@ -1,0 +1,27 @@
+<div class="row container">
+
+    <div class="col-3 bg-dark border-right p-3">
+        <h1 class="text-light">PoetryDB</h1>
+        <hr class="text-white">
+        <h2 class="text-white">Podrian interesarte</h2>
+        <ul class="list-group">
+            <li *ngFor="let obra of obrasAzar" class="list-group-item">
+                Nombre:{{obra.title}}
+                <br>
+                Autor:{{obra.author}}
+            </li>
+        </ul>
+        <hr>
+        <button class="btn btn-primary" (click)="listaAutores()">Lista de autores</button>
+        <hr>
+        <button class="btn btn-primary" (click)="favoritos()">Favoritos</button>
+        <hr>
+        <button class="btn btn-primary" (click)="logOut()">Logout</button>
+        
+    </div>
+
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

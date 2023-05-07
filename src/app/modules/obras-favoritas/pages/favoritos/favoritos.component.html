@@ -1,0 +1,26 @@
+<div class="position-absolute top-50 start-50 translate-middle" *ngIf="load">
+    <mat-spinner mode="indeterminate" [color]="color"></mat-spinner>
+</div>
+<h1>Favoritos</h1>
+<hr>
+<table class="table table-dark table-hover table-responsive" id="table">
+    <thead>
+        <tr>
+            <th>Autor</th>
+            <th>Obra</th>
+            <th>citas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of favoritos | paginator:page_size:page_number">
+            <td>{{item.author}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.lines}}</td>
+            <td><button class="btn btn-primary btn-sm" (click)="borrarFav(item)">quitar de la lista</button></td>
+        </tr>
+    </tbody>
+</table>
+<mat-paginator [length]="this.favoritos.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOp"
+(page)="handlePage($event)" aria-label="Select page">
+</mat-paginator>
