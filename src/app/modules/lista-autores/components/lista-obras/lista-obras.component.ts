@@ -11,7 +11,8 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class ListaObrasComponent implements OnInit {
 
-  obras: Obras[] = [];
+  //obras: Obras[] = [];
+  obras: any;
   page_size: number = 3;
   page_number: number = 1;
   pageSizeOp = [10, 20];
@@ -27,7 +28,10 @@ export class ListaObrasComponent implements OnInit {
   listaObras() {
     console.log(this.autor);
     this.autorService.listaObras(this.autor).subscribe(data => {
-      this.obras = data;
+      this.obras = data.map(obra => {
+        const lineas = obra.lines.slice(0, 3)
+        return {...obra, lines: lineas};
+      });
       this.load = false;
     })
   }

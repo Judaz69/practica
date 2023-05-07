@@ -24,7 +24,11 @@ export class FavoritosComponent implements OnInit {
 
   listarFav() {
     const data = JSON.parse(localStorage.getItem('favoritos') || '[]');
-    this.favoritos = Object.values(data);
+    this.favoritos = Object.values(data)
+    .map((obra : any) => {
+      const lineas = obra.lines.slice(0, 3).join("\n");
+      return {...obra, lines: lineas};
+    });
     this.load = false;
   }
 
