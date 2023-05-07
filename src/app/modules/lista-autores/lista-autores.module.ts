@@ -7,6 +7,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ListaObrasComponent } from './components/lista-obras/lista-obras.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatDialogModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class ListaAutoresModule { }

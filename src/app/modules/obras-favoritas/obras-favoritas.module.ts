@@ -5,6 +5,7 @@ import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ObrasRoutingModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ]
 })
 export class  ObrasFavoritasModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Obras } from 'src/app/modules/lista-autores/interfaces/obras.interface';
 
 @Component({
@@ -16,7 +17,7 @@ export class FavoritosComponent implements OnInit {
   load: boolean = true;
   color: ThemePalette = 'primary';
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.listarFav();
@@ -44,6 +45,11 @@ export class FavoritosComponent implements OnInit {
     if (index > -1) {
       datosfav.splice(index, 1);
       localStorage.setItem('favoritos', JSON.stringify(datosfav));
+      this._snackBar.open('La obra fue quitada de la lista', 'cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000
+      });
     }
 
     this.listarFav();

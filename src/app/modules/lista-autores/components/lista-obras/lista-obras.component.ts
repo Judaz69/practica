@@ -4,6 +4,7 @@ import { Obras } from '../../interfaces/obras.interface';
 import { AutoresService } from '../../services/autores.service';
 import { PageEvent } from '@angular/material/paginator';
 import { ThemePalette } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lista-obras',
@@ -11,15 +12,16 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class ListaObrasComponent implements OnInit {
 
-  //obras: Obras[] = [];
-  obras: any;
+  obras: Obras[] = [];
   page_size: number = 3;
   page_number: number = 1;
   pageSizeOp = [10, 20];
   load: boolean = true;
   color: ThemePalette = 'primary';
 
-  constructor(@Inject(MAT_DIALOG_DATA) public autor: string, private autorService: AutoresService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public autor: string, 
+  private autorService: AutoresService,
+  private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.listaObras();
@@ -42,16 +44,30 @@ export class ListaObrasComponent implements OnInit {
 
     if (datosfav === null) {
       localStorage.setItem('favoritos', JSON.stringify(data));
+      this._snackBar.open('añadido a la lista de favoritos', 'cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000
+      });
     }
 
     if (existe) {
-      console.log('ya existe');
+      this._snackBar.open('ya existe en la lista de favoritos', 'cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000
+      });
     }
     else 
     {
       datosfav.push(data)
       const favNuevo = JSON.stringify(datosfav)
       localStorage.setItem('favoritos', favNuevo);
+      this._snackBar.open('añadido a la lista de favoritos', 'cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000
+      });
     }
   }
 
